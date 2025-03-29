@@ -9,7 +9,8 @@ struct Person {
 enum Color {
     Red,
     Green,
-    Yellow
+    Blue,
+    Yellow,
 }
 
 impl fmt::Display for Color {
@@ -17,6 +18,7 @@ impl fmt::Display for Color {
         let color = match self {
             Color::Red => "Red",
             Color::Green => "Green",
+            Color::Blue => "Blue",
             Color::Yellow => "Yellow"
         };
         write!(f, "{}", color)
@@ -40,6 +42,17 @@ impl Person {
 }
 
 fn main() {
-    let user = Person::new("John Doe", 33, Color::Yellow);
-    user.show();
+    let users = vec![
+        Person::new("Miles Davis", 43, Color::Yellow),
+        Person::new("Scott LaFaro", 25, Color::Blue),
+        Person::new("Bill Evans", 33, Color::Green),
+        Person::new("Paul Motian", 31, Color::Red)
+    ];
+    
+    for user in users {
+        println!();
+        println!("--- User Details ---");
+        user.show();
+        println!();
+    }
 }
