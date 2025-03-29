@@ -9,7 +9,8 @@
 - Escribe un programa que tenga una estructura llamada Persona que almacene la siguiente información:
 ```rust 
 Nombre → tipo String  
-Edad → tipo u32  Color Favorito → tipo Enum.
+Edad → tipo u32
+Color Favorito → tipo Enum.
 ```
 El enumerado se llamará Color y tendrá los siguientes colores: Rojo, Verde, Amarillo. Además, se deberán añadir datos de prueba y leer la información almacenada en la estructura creada. 
 
