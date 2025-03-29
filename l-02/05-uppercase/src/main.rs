@@ -1,6 +1,23 @@
 use std::env;
+use std::process;
+
+fn get_input_args() -> Option<String> {
+    let args: Vec<String> = env::args().skip(1).collect();
+    if args.is_empty() {
+        None
+    } else {
+        Some(args.join(" "))
+    }
+}
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    println!("{}", args[1..].join(" ").to_uppercase());
+    match get_input_args() {
+        Some(input) => {
+            println!("{}", &input.to_uppercase());
+        },
+        None => {
+            eprintln!("Error: No argument provided!");
+            process::exit(1)
+        }
+    }
 }
