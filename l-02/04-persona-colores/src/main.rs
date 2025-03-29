@@ -1,28 +1,45 @@
-// nombre → tipo string  
-// edad → tipo u32
-// color favorito → tipo enum.
-// rojo, verde, amarillo. además, se deberán añadir datos de prueba y leer la información almacenada en la estructura creada. 
+use std::fmt;
 
-#[derive(Debug)]
 struct Person {
     name: String,
     age: u32,
-    fav_color: Colors
+    fav_color: Color
 }
 
-#[derive(Debug)]
-enum Colors {
+enum Color {
     Red,
     Green,
     Yellow
 }
 
-fn main() {
-    let user = Person {
-        name: String::from("John Doe"),
-        age: 33,
-        fav_color: Colors::Green
-    };
+impl fmt::Display for Color {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let color = match self {
+            Color::Red => "Red",
+            Color::Green => "Green",
+            Color::Yellow => "Yellow"
+        };
+        write!(f, "{}", color)
+    }
+}
 
-    println!("{:?}", user);
+impl Person {
+    fn new(name: &str, age: u32, fav_color: Color) -> Self {
+        Self {
+            name: name.to_string(),
+            age,
+            fav_color
+        }
+    }
+
+    fn show(&self) {
+        println!("Name: {}", self.name);
+        println!("Age: {}", self.age);
+        println!("Fav Color: {}", self.fav_color);
+    }
+}
+
+fn main() {
+    let user = Person::new("John Doe", 33, Color::Yellow);
+    user.show();
 }
