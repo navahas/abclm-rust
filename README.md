@@ -3,6 +3,7 @@
 ### Lecciones
 - [L1](./l-01/)
 - [L2](./l-02/)
+- [L3](./l-03/)
 
 ---
 Asociación Blockchain de Castilla-La Mancha
