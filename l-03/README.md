@@ -5,10 +5,10 @@ El mago Archibaldo tiene una colección de libros mágicos, runas y hechizos. Qu
 TU MISIÓN:
 Corrige el código usando lo que has aprendido sobre: ownership, borrowing (inmutable y mutable), clone, copy, const, static y lifetime.
 
-🧠 OBJETIVOS DEL EJERCICIO:
+OBJETIVOS DEL EJERCICIO:
 
-✅ 1. Arreglar errores de préstamo mutable e inmutable
-✅ 2. Usar .clone() cuando quieras conservar ownership
-✅ 3. Aprovechar Copy con tipos simples como i32
-✅ 4. Corregir el error de lifetime en mas_largo
-✅ 5. Entender cuándo usar const y static
+1. Arreglar errores de préstamo mutable e inmutable
+2. Usar .clone() cuando quieras conservar ownership
+3. Aprovechar Copy con tipos simples como i32
+4. Corregir el error de lifetime en mas_largo
+5. Entender cuándo usar const y static
