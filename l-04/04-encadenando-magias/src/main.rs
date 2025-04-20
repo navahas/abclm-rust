@@ -13,7 +13,7 @@ fn leer_mensaje(mensaje: String) -> Result<String, String> {
     if mensaje.is_empty() {
         Err("no pudo ser".to_string())
     } else {
-        Ok(mensaje)
+        Ok("El mensaje es: Sigue aprendiendo Rust".to_string())
     }
 }
 
