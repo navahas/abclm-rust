@@ -1,41 +1,44 @@
 #[derive(Debug)]
-struct ResultadoDivision {
-    valor: Option<i32>,
-    mensaje: Option<String>,
-    error: Result<bool, bool>
+enum ResultadoDivision {
+    Resultado(Option<i32>),
+    Error(String)
 }
 
 fn dividir_si_puedes(a: i32, b: i32) -> ResultadoDivision {
     if b == 0 {
         let error_msg = String::from("No puedes dividir por 0!");
-        return ResultadoDivision {
-            valor: None,
-            mensaje: Some(error_msg),
-            error: Err(true)
-        }
+        return ResultadoDivision::Error(error_msg);
     }
 
     if a % b == 0 {
-        let res = Some(a / b);
-        ResultadoDivision {
-            valor: res,
-            mensaje: None,
-            error: Ok(true)
-        }
+        ResultadoDivision::Resultado(Some(a / b))
     } else {
-        let error_msg = format!("{} no es divisible sin resto por {}", a, b);
-        ResultadoDivision {
-            valor: None,
-            mensaje: Some(error_msg),
-            error: Err(true)
+        ResultadoDivision::Resultado(None)
+    }
+}
+
+impl ResultadoDivision {
+    fn print_result(&self, a: i32, b: i32) {
+        match self {
+            ResultadoDivision::Resultado(Some(res)) => {
+                println!("{} / {} = {}", a, b, res);
+            },
+            ResultadoDivision::Resultado(None) => {
+                println!("{} no es divisible exactamente por {}", a, b);
+            },
+            ResultadoDivision::Error(err) => {
+                eprintln!("Error al dividir {} / {}: {}", a, b, err);
+            }
         }
     }
 }
 
 fn main() {
-    let num_tup: Vec<(i32, i32)> = vec![(10, 2), (7, 3), (11, 0)];
-    for (a, b) in num_tup {
-        let result = dividir_si_puedes(a, b);
-        println!("{:?} ----> {:?}, {:?}", result.error, result.valor, result.mensaje)
+    let casos: Vec<(i32, i32)> = vec![(10, 2), (7, 3), (11, 0)];
+    for (a, b) in casos {
+        let resultado = dividir_si_puedes(a, b);
+        println!("\n");
+        println!("----> {:?}", resultado);
+        resultado.print_result(a, b)
     }
 }
