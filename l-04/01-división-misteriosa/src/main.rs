@@ -1,18 +1,41 @@
-fn dividir_si_puedes(a: i32, b: i32) -> Option<i32> {
+#[derive(Debug)]
+struct ResultadoDivision {
+    valor: Option<i32>,
+    mensaje: Option<String>,
+    error: Result<bool, bool>
+}
+
+fn dividir_si_puedes(a: i32, b: i32) -> ResultadoDivision {
     if b == 0 {
-        eprintln!("No puedes dividir por 0!");
-        return None;
+        let error_msg = String::from("No puedes dividir por 0!");
+        return ResultadoDivision {
+            valor: None,
+            mensaje: Some(error_msg),
+            error: Err(true)
+        }
     }
 
     if a % b == 0 {
-        Some(a / b)
+        let res = Some(a / b);
+        ResultadoDivision {
+            valor: res,
+            mensaje: None,
+            error: Ok(true)
+        }
     } else {
-        None
+        let error_msg = format!("{} no es divisible sin resto por {}", a, b);
+        ResultadoDivision {
+            valor: None,
+            mensaje: Some(error_msg),
+            error: Err(true)
+        }
     }
 }
 
 fn main() {
-    println!("@ ----> {:?}", dividir_si_puedes(7, 3));
-    println!("@ ----> {:?}", dividir_si_puedes(10, 2));
-    println!("@ ----> {:?}", dividir_si_puedes(7, 0));
+    let num_tup: Vec<(i32, i32)> = vec![(10, 2), (7, 3), (11, 0)];
+    for (a, b) in num_tup {
+        let result = dividir_si_puedes(a, b);
+        println!("{:?} ----> {:?}, {:?}", result.error, result.valor, result.mensaje)
+    }
 }
