@@ -16,11 +16,9 @@ const LISTA_LIBROS: &[Libro] = &[
     Libro { titulo: "Campos de Castilla", autor: "Antonio Machado" },
 ];
 
-pub fn buscar_libro(titulo_: &str) -> Option<String> {
-    for &Libro { titulo, autor } in LISTA_LIBROS {
-        if titulo == titulo_ {
-            return Some(String::from(autor))
-        }
-    }
-    None
+pub fn buscar_libro(titulo_: &str) -> Option<&'static str> {
+    LISTA_LIBROS
+        .iter()
+        .find(|libro| libro.titulo == titulo_)
+        .map(|libro| libro.autor)
 }
