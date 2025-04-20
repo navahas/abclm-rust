@@ -33,7 +33,7 @@ Crea un archivo llamado `biblioteca.rs` con una función pública.
 buscar_libro(titulo: &str) -> Option<String>.
 ```
 Si el libro está en una lista interna, devuelve su autor. Si no está, devuelve `None`.
-- Bonus: Haz que la lista de libros est en una constante privada dentro del módulo.
+- Bonus: Haz que la lista de libros esté en una constante privada dentro del módulo.
 
 ---
 ### Ejercicio 4: Encadenando magias
