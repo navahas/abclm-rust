@@ -5,6 +5,7 @@ Crea una función
 ```rust
 dividir_si_puedes(a: i32, b: i32) -> Option<i32>```
 Debe devolver `Some(resultado)` si la división es exacta, y `None` si no lo es o si b == 0.
+```
 Ejemplo:
 ```rust
   dividir_si_puedes(10, 2)  Some(5)
